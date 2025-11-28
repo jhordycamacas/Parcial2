@@ -58,5 +58,5 @@ def promPrecios(x: List[Double]): Double = x.sum / x.size
 
 def proMasValioso(x: List[Producto], valorBase: Double, min: Int): List[ProductoPromedio] = {
   x.filter(p => p.precios.size >= min && p.precios(precio => precio > valorBase))
-    .map(p => ProductoPromedio(p, promPrecios(p.precios)))
+    .map(p => ProductoPromedio(p, promPrecios(p.precios))).maxBy(_.precio)
 }

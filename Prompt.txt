@@ -1,0 +1,22 @@
+Parcial2 - Corrección usando IA
+Cual fue el prompt?
+- Lo que se le envió a la IA(Chatgpt) textualmente fue:
+"Estas son las indicaciones con los datos (se enviaron los datos y las instrucciones), este es el código que estaba realizando para resolverlo (se envió el código realizado hasta el momento) por que me da error, y cumple con todas las condiciones que se pide?, estamos trabajando programación funcional y en el lenguaje de Scala"
+
+Código antes de usar IA:
+
+def promPrecios(x: List[Double]): Double = x.sum / x.size
+
+def proMasValioso(x: List[Producto], valorBase: Double, min: Int): List[ProductoPromedio] = {
+x.filter(p => p.precios.size >= min && p.precios(precio => precio > valorBase))
+    **.map(p => ProductoPromedio(p, promPrecios(p.precios))).maxBy(\_.precio)**
+
+}
+ Código después de usar IA:
+
+def promPrecios(x: List[Double]): Double = x.sum / x.size
+
+def proValioso(x: List[Producto], valorBase: Double, min: Int): ProductoPromedio = {
+  x.filter(p => p.precios.size >= min && p.precios.exists(precio => precio > valorBase))
+    .map(p => ProductoPromedio(p, promPrecios(p.precios))).maxBy(_.promedio)
+}

@@ -56,8 +56,7 @@ case class ProductoPromedio(producto: Producto, promedio: Double)
 
 def promPrecios(x: List[Double]): Double = x.sum / x.size
 
-def proValioso(x: List[Producto], valorBase: Double, min: Int): List[ProductoPromedio] = {
-
-  val productos: List[ProductoPromedio] = List(x.precios.filter(p => p.size >= min && (p.filter(s => s > valorBase)), promPrecios(x.precios)))
-  productos
+def proMasValioso(x: List[Producto], valorBase: Double, min: Int): List[ProductoPromedio] = {
+  x.filter(p => p.precios.size >= min && p.precios(precio => precio > valorBase))
+    .map(p => ProductoPromedio(p, promPrecios(p.precios)))
 }
